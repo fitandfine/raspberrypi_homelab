@@ -163,9 +163,28 @@ $ ssh anup-on-pi@172.20.10.9
 
   ![Login with key-pair](screenshots/5.png)
 
------
 
 The infrastructure access is now secure and automated. 
------
 
-Next,we will move on to install Nginx.
+-----
+## Installing Nginx server on raspberry Pi
+```bash
+$ sudo apt update
+$ sudo apt install nginx -y && sudo systemctl status nginx
+```
+![Nginx Port conflict](screenshots/6.png)
+## Oh My Holiest of GODs, ERROR !!
+
+What happened here is a classic port conflict error. While Nginx installed successfully, it failed to start because another program was already using its required default port, TCP port 80.
+
+```bash
+# Command: Finds the Process ID (PID) using TCP port 80.
+# The `fuser` utility is highly effective for this task.
+$ sudo fuser 80/tcp # shows which process id is using the port 80
+$ ps -p 1158 -o comm= # in this case it was the process id number 1158
+$ sudo systemctl stop apache2 # process id 1158 happened to be apache2
+$ sudo systemctl start nginx # nginx now started after freeing port 80 from apache2
+$ sudo systemctl status nginx # shows the status of nginx ( see screenshot below)
+```
+
+![Nginx is Running now](screenshots/7.png)
