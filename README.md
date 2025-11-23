@@ -203,8 +203,10 @@ $ sudo nano index.html
 ## Here is our own static html file
 ![Our html file served by nginx](screenshots/11.png)
 
-## Please check inside scripts folder for some automation
+## Please check inside [scripts](https://github.com/fitandfine/raspberrypi_homelab/tree/main/scripts) folder for some automation scripts.
+## There is a [Note.md](https://github.com/fitandfine/raspberrypi_homelab/blob/main/scripts/Note.md) file as well.
 # Thank you
-make sure to take a look at make.sh file in scripts. It will save you from making your bash scripts (.sh) executable manually.
+make sure to take a look at make.sh file in scripts/bash and scripts/python. It will save you from making our bash scripts (.sh) executable manually and it also runs our python scripts.
 ```bash
 $ ./make.sh <script_name>
+```
