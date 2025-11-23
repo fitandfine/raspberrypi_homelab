@@ -203,5 +203,8 @@ $ sudo nano index.html
 ## Here is our own static html file
 ![Our html file served by nginx](screenshots/11.png)
 
-# Please check inside scripts folder for some automation
+## Please check inside scripts folder for some automation
 # Thank you
+make sure to take a look at make.sh file in scripts. It will save you from making your bash scripts (.sh) executable manually.
+```bash
+$ ./make.sh <script_name>
