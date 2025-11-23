@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# if you have apache2 installed and running, this script may not work as expected
+# because both nginx and apache2 try to use the same port (80) by default.
+
+# considering there is no conflict with apache2, this script checks if nginx is running
+# and starts it if it's not running.
+
 # I always start by printing something so I know the script actually ran.
 echo "Starting simple NGINX monitor..."
 
