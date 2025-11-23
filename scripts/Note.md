@@ -53,7 +53,6 @@ $ cd scripts && cd bash # navigates to /home/scripts/bash folder
 ![Copying scripts folder to RaspberryPi ](../screenshots/12.png)
 
 
-My Pi is **headless**, so everything goes through SSH.
 
 # **BASH SCRIPTS**
 
@@ -114,6 +113,15 @@ I kept editing `index.html` while experimenting with Nginx and wanted something 
 
 ![Running restart_on_change.sh](../screenshots/14.png)
 
+Then I made some change to `index.html` inside `/var/www/html/` folder with:
+```bash
+$ sudo nano index.html
+```
+![Updating index.html](../screenshots/15.png)
+
+### **After saving the `index.html` with ctrl+o & exiting nano with ctrl+x, I refreshed the browser to see the effect. It worked! here is the screenshot:**
+![Nginx restarted upon detecting changes](../screenshots/16.png)
+
 ## 3. `backup_nginx_config.sh`
 
 This script creates timestamped backups of `/etc/nginx`.
@@ -146,7 +154,9 @@ nginx-backup-2025-11-21-14-35-59
   * module configs
     …so backing up the whole folder is safer.
 
----
+![Backup Created with timestamp](../screenshots/17.png)
+
+**Note: This script is consumed the best as cron job**
 
 ## 4. `tail_nginx_logs.sh`
 
@@ -170,7 +180,8 @@ This script tails both Nginx logs together so I can see real-time traffic and er
   * 500 errors appear in error log
   * seeing both at once helps correlate events
 
----
+**I tested Live monitoring feature by refreshing the browser, one more entry was registered in the terminal**
+![Live monitoring of the logs](../screenshots/18.png)
 
 # **PYTHON SCRIPTS**
 
@@ -194,9 +205,9 @@ I wanted a quick way to confirm whether the web server was responding without op
 
 * `requests.get()` is much easier than Python’s built-in `urllib` for HTTP calls.
 * A failed connection throws an exception, so I wrapped everything in `try/except`.
-* Great for scripting uptime checks or cron jobs later.
 
----
+
+![Checking http status with python script](../screenshots/19.png)
 
 ## 2. `count_requests.py`
 
