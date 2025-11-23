@@ -2,9 +2,23 @@
 
 # I wrote this because I was getting tired of restarting nginx every time
 # I edited index.html. Using inotifywait (from inotify-tools) to watch changes.
+# Make sure inotify-tools is installed: sudo apt install inotify-tools
 # This has the best use case when runs as a service.
 # This will occupy yout terminal untill you stop it with Ctrl+C.
-# Make sure inotify-tools is installed: sudo apt install inotify-tools
+# Without adding it to .service, you can run it in the background using nohup ( No Hang Up)
+# sudo nohup ./restart_on_change.sh > /dev/null 2>&1 &
+# > /dev/null 2>&1 directs output to the "void" so it doesn't fill up your disk with "Watching..." logs ( recommended if running long term)
+# Verify it's running: Use ps to find the process.
+# ps aux | grep restart_on_change.sh
+# sudo kill 12345  # Replace 12345 with the actual PID found from the previous command.
+# or you can type: $ jobs to see background jobs in current terminal session.
+# then use: $ kill %1  # Replace 1 with the job number if multiple jobs are running.
+
+
+
+# For the sake of simplicity, I'm avoiding the instruction to add this script to services. 
+
+
 # This directory is where nginx stores the default site files.
 WATCH_DIR="/var/www/html"
 
