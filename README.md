@@ -3,7 +3,7 @@
 This project documents the setup and configuration of a personal Raspberry Pi used as a foundational home lab server. The primary objective is to gain practical, hands-on experience with fundamental DevOps principles, including secure remote access, network configuration, web server deployment, and service automation in a Linux environment.
 
 ### This documentation serves as a practical blueprint, demonstrating comfort with Linux command-line tools, networking fundamentals (Nmap), system services (systemctl), and scripting for basic automation.
-
+### !! IMPORTANT !! This README.md is the first part of this project and [Note.md](https://github.com/fitandfine/raspberrypi_homelab/blob/main/scripts/Note.md) file, inside [scripts](https://github.com/fitandfine/raspberrypi_homelab/tree/main/scripts) folder is the second part. Make sure you check that out too.
 ## Project Goals:
 **Infrastructure Management:** Successfully discover, connect to, and manage a headless Raspberry Pi over a local network.
 
@@ -204,9 +204,9 @@ $ sudo nano index.html
 ![Our html file served by nginx](screenshots/11.png)
 
 ## Please check inside [scripts](https://github.com/fitandfine/raspberrypi_homelab/tree/main/scripts) folder for some automation scripts.
-## There is a [Note.md](https://github.com/fitandfine/raspberrypi_homelab/blob/main/scripts/Note.md) file as well.
+## There is a [Note.md](https://github.com/fitandfine/raspberrypi_homelab/blob/main/scripts/Note.md) file, inside [scripts](https://github.com/fitandfine/raspberrypi_homelab/tree/main/scripts) folder, which contains description and output screenshot of the scripts running on raspberry pi. Please have a look at that too.
 # Thank you
-make sure to take a look at make.sh file in scripts/bash and scripts/python. It will save you from making our bash scripts (.sh) executable manually and it also runs our python scripts.
+Make sure to take a look at make.sh file in scripts/bash and scripts/python. It will save you from making our bash scripts (.sh) executable manually and it also runs your python scripts.
 ```bash
 $ ./make.sh <script_name>
 ```
