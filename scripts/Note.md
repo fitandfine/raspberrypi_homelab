@@ -160,7 +160,8 @@ nginx-backup-2025-11-21-14-35-59
 
 ## 4. `tail_nginx_logs.sh`
 
-This script tails both Nginx logs together so I can see real-time traffic and errors in one terminal.
+This script tails both Nginx logs together so I can see real-time traffic and errors in one terminal. 
+
 
 ### **What it does**
 
@@ -183,9 +184,24 @@ This script tails both Nginx logs together so I can see real-time traffic and er
 **I tested Live monitoring feature by refreshing the browser, one more entry was registered in the terminal**
 ![Live monitoring of the logs](../screenshots/18.png)
 
+
+## More Usages of this script
+**1. This script can redirect output to a file using `>` (create or overwrite) or `>>` (append or create) operator.
+If done so, the output of the terminal  will just be a blinking cursor while the file will be populated in real time.**
+* Example:
+```bash
+$ ./make.sh tail_nginx_logs.sh >> ~/tail_log.txt
+```
+**2. This script can be piped `|` with `tee` command to concurrently display the output into standard output ( the terminal `screen` ) as well as the `file`. The -a flag is critical in this case, which stands for `append`. This flag adds new data to the end rather than deleting the existing contents and creates fresh file if the file with specified filename is not present in the destination.**
+* Example:
+```bash
+$ ./make.sh tail_nginx_logs.sh | tee -a ~/my_captured_logs.txt 
+```
+---
+
 # **PYTHON SCRIPTS**
 
----
+
 
 ## 1. `check_http_status.py`
 
@@ -230,6 +246,8 @@ This script counts how many HTTP requests Nginx has served by counting the numbe
   * alerting checks
   * rate monitoring tools
 
+**I refreshed the browser couple of times and ran the script again, it worked!**
+![Request counter](../screenshots/20.png)
 ---
 
 #  **The Utility Runner — make.sh**
@@ -285,3 +303,5 @@ All these scripts were written to help me understand:
 * how to structure a tiny ops toolkit for a real server
 
 Nothing here is over-engineered. I have tried my level best to write comments in the script files to not surprise myself in future a.k.a maintainability.
+# Thanking you for your time in reading this far,
+## Anup 
