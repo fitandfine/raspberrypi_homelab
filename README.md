@@ -13,9 +13,23 @@ This project documents the setup and configuration of a personal Raspberry Pi us
 
 
 
-**Automation:** Utilize Bash scripting and Linux utilities (inotifywait, systemctl, curl) to automate service health checks and configuration management, ensuring high availability and operational efficiency.
+**Automation:** Utilize Bash scripting and Linux utilities (inotifywait, systemctl) to automate service health checks and configuration management, ensuring high availability and operational efficiency.
 
-
+---
+```bash
+Laptop (Ubuntu)
+     |
+     | SSH / SCP over hotspot
+     |
+iPhone Hotspot (NAT Router)
+     |
+     | Local IP: 172.20.10.X (to be discovered)
+     |
+Raspberry Pi (Headless)
+  - Nginx Server
+  - Automation Scripts
+```
+---
 
 ### Project Folders & git initialization
 ```bash
@@ -29,7 +43,7 @@ $ git add . && git commit -m " Initial Commit" && git remote add origin https://
 
 ![Project Setup and Git initialization](screenshots/1.png)
 
-## Problem unknown raspberry Pi IP address:
+## Problem: unknown raspberry Pi IP address:
 When running a Raspberry Pi in headless mode (no keyboard, mouse, or monitor), the only way to access it is over the network via SSH.
 But when your Raspberry Pi is connected through an iPhone hotspot, the hotspot UI does not show connected device IP addresses.
 This makes it impossible to know the Pi’s IP directly.
@@ -102,13 +116,13 @@ To definitively prove that $172.20.10.9$ is a Linux server ready for remote acce
 
 
 ## Connecting Raspberry PI with ssh:
-Enter the following command <user_name>@ip_address, and you will be prompted for password or linux on raspberry pi. 
+Enter the following command `<user_name>@ip_address`, and you will be prompted for password or linux on raspberry pi. 
 ```bash
 $ ssh anup-on-pi@172.20.10.9
 ```
 ![ssh raspberry pi from ubuntu laptop](screenshots/3.png)
 
-Now terminate the ssh session with exit command and create key-pair login between laptop and raspberry pi before installing nginx.
+Now terminate the ssh session with `exit` command and create key-pair login between laptop and raspberry pi before installing nginx.
 -----
 
 ##  Why Key-Pair Authentication is Necessary
@@ -173,9 +187,9 @@ $ sudo apt update
 $ sudo apt install nginx -y && sudo systemctl status nginx
 ```
 ![Nginx Port conflict](screenshots/6.png)
-## Oh My Holiest of GODs, ERROR !!
+# Oh My Holiest of GODs, ERROR !!
 
-What happened here is a classic port conflict error. While Nginx installed successfully, it failed to start because another program was already using its required default port, TCP port 80.
+**What happened here is a classic port conflict error. While Nginx installed successfully, it failed to start because another program was already using its required default port, TCP port 80.**
 
 ```bash
 # Command: Finds the Process ID (PID) using TCP port 80.
