@@ -151,7 +151,7 @@ $ ssh-copy-id -i ~/.ssh/id_rsa_pi_new.pub anup-on-pi@172.20.10.9
 ![Copy public key to the Pi](screenshots/4.png)
 ### Step 3: Test the Key-Based Login (Laptop)
 
-Now, attempt to connect to the Raspberry Pi using same ssh command. This will prompt you for yout laptop's password once. Then it will not prompt for it till you log out or reboot the laptop.
+Now, attempt to connect to the Raspberry Pi using same ssh command. This will prompt you for yout laptop's password once citing the key is locked. Then it will not prompt for it till you log out or reboot the laptop.
 
 ```bash
 # Command: Connect using the new key file.
@@ -188,3 +188,20 @@ $ sudo systemctl status nginx # shows the status of nginx ( see screenshot below
 ```
 
 ![Nginx is Running now](screenshots/7.png)
+
+## Default nginx page accessed from local network
+![Default Nginx Page](screenshots/8.png)
+## Custom static page running in the nginx server
+Run following commands:
+```bash
+$ cd /var/www/html/
+$ sudo nano index.html
+```
+![commands for new index.html](screenshots/9.png)
+## Populate the index.html using nano editor
+![creating a simple html file](screenshots/10.png)
+## Here is our own static html file
+![Our html file served by nginx](screenshots/11.png)
+
+# Please check inside scripts folder for some automation
+# Thank you
